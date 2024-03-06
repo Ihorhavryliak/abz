@@ -12,7 +12,7 @@ const FieldUpload = ({ error }: FieldUploadType) => {
     setFileSelected(selectedFile);
   };
   return (
-    <div className="font-nunito max-w-[328px] w-full">
+    <div className="font-nunito max-w-[328px] w-full cursor-pointer">
       <label>
         <div className="flex h-[54px]">
           <div
@@ -29,7 +29,7 @@ const FieldUpload = ({ error }: FieldUploadType) => {
                 ? "border-custom-red-100 border-2"
                 : "border-custom-gray-200 border",
               fileSelected ? "text-black" : "text-custom-gray-300",
-              "w-full  py-3.5 ps-4 border-s-0 rounded-e "
+              "w-full  py-3.5 ps-4 border-s-0 rounded-e"
             )}
           >
             {fileSelected ? fileSelected?.name : "Upload your photo"}
