@@ -14,6 +14,7 @@ const config: Config = {
       colors: {
         custom: {
           'black-100': 'rgba(0, 0, 0, 0.87)',
+          'black-200': 'rgba(0, 0, 0, 0.50)',
           'yellow-100': '#F4E041',
           'yellow-200': '#FFE302',
           'blue-100': '#00BDD3',
@@ -27,7 +28,10 @@ const config: Config = {
       },
       lineHeight: {
         '162': '162%'
-      }
+      },
+      maxWidth: {
+        mx: '1280px'
+      },
     },
   },
   plugins: [],

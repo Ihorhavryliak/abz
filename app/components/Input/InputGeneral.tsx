@@ -34,7 +34,7 @@ const InputGeneral = ({ error, label }: InputGeneralType) => {
             error
               ? "border-custom-red-100 border-2"
               : "border-custom-gray-200 border",
-            value ? "text-black-100" : "text-custom-gray-300",
+            value ? "text-custom-black-100" : "text-custom-gray-300",
             "w-full py-3.5 ps-4 rounded focus:outline-none peer"
           )}
           placeholder=" "

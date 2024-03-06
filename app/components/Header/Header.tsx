@@ -3,7 +3,7 @@ import LogoIcon from "../Icon/LogoIcon";
 
 const Header = () => {
   return (
-    <div className="px-[60px] py-4 flex justify-between w-full">
+    <div className="py-4 flex justify-between w-full">
       <LogoIcon />
       <div className="flex gap-2.5">
       <ButtonGeneral text="Users" onClick={() => {}} />
