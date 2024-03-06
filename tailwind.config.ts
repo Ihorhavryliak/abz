@@ -17,6 +17,10 @@ const config: Config = {
           'yellow-200': '#FFE302',
           'blue-100': '#00BDD3',
           'light-gray-100': '#F8F8F8',
+          'gray-100': '#b4b4b4',
+          'gray-200': '#D0CFCF',
+          'gray-300': '#7E7E7E',
+          'red-100': '#CB3D40',
         }
       },
       lineHeight: {
