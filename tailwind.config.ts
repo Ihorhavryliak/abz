@@ -13,6 +13,7 @@ const config: Config = {
       },
       colors: {
         custom: {
+          'black-100': 'rgba(0, 0, 0, 0.87)',
           'yellow-100': '#F4E041',
           'yellow-200': '#FFE302',
           'blue-100': '#00BDD3',
@@ -20,6 +21,7 @@ const config: Config = {
           'gray-100': '#b4b4b4',
           'gray-200': '#D0CFCF',
           'gray-300': '#7E7E7E',
+          'gray-400': '#F8F8F8',
           'red-100': '#CB3D40',
         }
       },

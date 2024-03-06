@@ -28,7 +28,7 @@ const FieldUpload = ({ error }: FieldUploadType) => {
               error
                 ? "border-custom-red-100 border-2"
                 : "border-custom-gray-200 border",
-              fileSelected ? "text-black" : "text-custom-gray-300",
+              fileSelected ? "text-black-100" : "text-custom-gray-300",
               "w-full  py-3.5 ps-4 border-s-0 rounded-e"
             )}
           >
