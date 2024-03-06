@@ -8,11 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        nunito: ['Nunito', 'sans-serif'],
       },
+      colors: {
+        custom: {
+          'yellow-100': '#F4E041',
+          'yellow-200': '#FFE302',
+          'blue-100': '#00BDD3',
+          'light-gray-100': '#F8F8F8',
+        }
+      },
+      lineHeight: {
+        '162': '162%'
+      }
     },
   },
   plugins: [],
