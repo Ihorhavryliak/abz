@@ -1,17 +1,22 @@
 import classNames from "@/app/utils/classNames";
-import {
-  ChangeEvent,
-  useState,
-} from "react";
+import { ChangeEvent, useState } from "react";
 
 type InputGeneralType = {
   error?: string;
   label?: string;
+  type?: string;
+  phone?: string;
 };
-const InputGeneral = ({ error, label }: InputGeneralType) => {
+
+const InputGeneral = ({
+  error,
+  label,
+  type = "text",
+  phone,
+}: InputGeneralType) => {
   const [isFocus, setIsFocus] = useState(false);
   const [value, setValue] = useState("");
-  console.log(value, "value>>");
+
   const handleBlur = () => {
     setIsFocus((prev) => !prev);
   };
@@ -28,14 +33,14 @@ const InputGeneral = ({ error, label }: InputGeneralType) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChange={handleOnChange}
-          type="text"
+          type={type}
           id="floating_outlined"
           className={classNames(
             error
               ? "border-custom-red-100 border-2"
               : "border-custom-gray-200 border",
             value ? "text-custom-black-100" : "text-custom-gray-300",
-            "w-full py-3.5 ps-4 rounded focus:outline-none peer"
+            "w-full py-3.5 ps-4 rounded focus:outline-none peer [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           )}
           placeholder=" "
         />
@@ -50,6 +55,11 @@ const InputGeneral = ({ error, label }: InputGeneralType) => {
           {label && label}
         </label>
       </div>
+      {phone && (
+        <div className="text-custom-gray-300 text-xs leading-[117%] ms-4">
+          {phone}
+        </div>
+      )}
       {error && (
         <div className="text-custom-red-100 text-xs leading-[117%] ms-4 mt-1">
           {error}

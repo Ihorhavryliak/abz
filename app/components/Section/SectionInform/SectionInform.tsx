@@ -1,10 +1,11 @@
 import React from "react";
-import ButtonGeneral from "../Button/ButtonGeneral";
-import photo from "../../../public/assets/images/main.png";
+import ButtonGeneral from "../../Button/ButtonGeneral";
+import photo from "../../../../public/assets/images/main.png";
 import Image from "next/image";
-const InformSection = () => {
+
+const SectionInform = () => {
   return (
-    <div className="relative">
+    <section className="relative">
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <Image
         className="w-full"
@@ -34,8 +35,8 @@ const InformSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default InformSection;
+export default SectionInform;
