@@ -1,6 +1,6 @@
 import React from 'react'
 import ButtonGeneral from '../../Button/ButtonGeneral'
-import photo from '../../../../public/assets/images/main.png'
+import photo from '../../../public/assets/images/main.png'
 import Image from 'next/image'
 
 const SectionInform = () => {

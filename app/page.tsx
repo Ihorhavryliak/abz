@@ -1,12 +1,12 @@
 'use client'
 import { useEffect } from 'react'
-import Header from './components/Header/Header'
-import SectionForm from './components/Section/SectionForm/SectionForm'
-import SectionInform from './components/Section/SectionInform/SectionInform'
-import SectionUser from './components/Section/SectionUser/SectionUser'
 import { fetchGetToken, fetchGetUsers } from '@/redux/slice/UsersSlice'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store'
+import Header from '@/components/Header/Header'
+import SectionInform from '@/components/Section/SectionInform/SectionInform'
+import SectionUser from '@/components/Section/SectionUser/SectionUser'
+import SectionForm from '@/components/Section/SectionForm/SectionForm'
 
 export default function Home() {
   const dispatch: AppDispatch = useDispatch()
@@ -20,7 +20,9 @@ export default function Home() {
       <Header />
       <SectionInform />
       <SectionUser />
-      <SectionForm />
+      <div className="mt-[140px]">
+        <SectionForm />
+      </div>
     </main>
   )
 }

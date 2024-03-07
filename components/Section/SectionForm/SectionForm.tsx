@@ -26,7 +26,7 @@ const SectionForm = () => {
                 type="number"
               />
             </div>
-            <div className="mt-[43px]">
+            <div className="mt-[29px]">
               <SelectYourPosition />
             </div>
             <div className="mt-[50px]">

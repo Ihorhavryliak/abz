@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { type RootState } from '../store'
-import { UsersType, userApi } from '@/api/userApi'
+import { UserType, UsersType, userApi } from '@/api/userApi'
 import storage from '@/utils/storage'
 import generalConst from '@/constants/generalConst'
 const TOKEN = generalConst.TOKEN
@@ -32,7 +32,7 @@ export const fetchGetUsers = createAsyncThunk('UsersSlice/fetchGetUsers', async 
 })
 
 const initialState = {
-  users: [] as UsersType[],
+  users: [] as UserType[],
   isLoading: false as boolean | null,
 }
 const UsersSlice = createSlice({
@@ -49,7 +49,8 @@ const UsersSlice = createSlice({
       state.isLoading = true
     })
     builder.addCase(fetchGetUsers.fulfilled, (state, { payload }) => {
-      state.users = payload
+  
+      state.users = payload?.users
     })
     builder.addCase(fetchGetUsers.rejected, (state, action) => {
       state.isLoading = false

@@ -1,4 +1,4 @@
-import classNames from "@/app/utils/classNames";
+import classNames from "@/utils/classNames";
 import React, { useState, ChangeEvent } from "react";
 
 type FieldUploadType = {
