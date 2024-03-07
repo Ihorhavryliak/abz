@@ -1,14 +1,32 @@
 const addStorage = async (name: string, value: any) => {
-  localStorage.setItem(name, JSON.stringify(value))
+  try {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(name, JSON.stringify(value))
+    }
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const removeStorage = async (name: string) => {
-  localStorage.removeItem(name)
+  try {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(name)
+    }
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const getStorage = (name: string) => {
-  const data = localStorage.getItem(name)
-  return data && JSON.parse(data)
+  try {
+    if (typeof window !== 'undefined') {
+      const data = localStorage.getItem(name)
+      return data && JSON.parse(data)
+    }
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const storage = {
