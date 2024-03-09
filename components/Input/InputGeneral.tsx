@@ -1,7 +1,8 @@
 import classNames from '@/utils/classNames'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { UseFormRegister } from 'react-hook-form'
 import { DataInputType, ErrorUserFormType, inputFieldType } from '../Section/SectionForm/hooks/useFormData'
+import useChangePositionLabel from './useChangePositionLabel'
 
 type InputGeneralType = {
   item: DataInputType | { [key: string]: string }
@@ -26,31 +27,13 @@ type InputGeneralType = {
 type UserInformationNameType = keyof inputFieldType
 type UserInformationNameErrorType = keyof ErrorUserFormType
 
-const InputGeneral = ({
-  errors,
-  label,
-  type = 'text',
-  phone,
-  register,
-  validation,
-  item,
-  value,
-}: InputGeneralType) => {
-
-  const [isFocus, setIsFocus] = useState(false)
-
-  const handleBlur = () => {
-    debugger
-    setIsFocus((prev) => !prev)
-  }
-  const handleFocus = () => {
-    setIsFocus(!isFocus)
-  }
-
+const InputGeneral = ({ errors, label, type = 'text', phone, register, validation, item, value }: InputGeneralType) => {
+  const { handleFocus, isFocus } = useChangePositionLabel()
   const isError = errors && errors[item?.name as UserInformationNameErrorType]
+
   return (
     <div>
-      <div className="relative font-nunito">
+      <div className="relative font-nunito input-component mb-5 empty">
         <input
           onFocus={handleFocus}
           type={type}
@@ -71,8 +54,8 @@ const InputGeneral = ({
           htmlFor="floating_outlined"
           className={classNames(
             isError ? 'text-custom-red-100' : 'text-custom-gray-300',
-            isFocus || value ? 'text-xs' : 'text-base',
-            'font-medium ms-2 absolute transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1 duration-300'
+            isFocus || value ? 'text-xs -top-2 transform' : 'text-base top-4 transform',
+            'absolute left-2 transition-all bg-white px-1'
           )}
         >
           {label && label}
