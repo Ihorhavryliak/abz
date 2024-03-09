@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { type RootState } from '../store'
-import { UserType, userApi } from '@/api/userApi'
+import { PositionType, UserType, userApi } from '@/api/userApi'
 import storage from '@/utils/storage'
 import generalConst from '@/constants/generalConst'
 const TOKEN = generalConst.TOKEN
 
+type SelectedPositionType = { [key: number]: string }
 export const fetchGetToken = createAsyncThunk('UsersSlice/fetchGetToken', async (_, { rejectWithValue }) => {
   try {
     const response = await userApi.getToken()
@@ -26,17 +27,42 @@ export const fetchGetUsers = createAsyncThunk('UsersSlice/fetchGetUsers', async 
   }
 })
 
+export const fetchGetUserPosition = createAsyncThunk(
+  'UsersSlice/fetchGetUserPosition',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await userApi.getPositions()
+      return response
+    } catch (e) {
+      console.log(e)
+      return rejectWithValue('An error occurred')
+    }
+  }
+)
+
 const initialState = {
   users: [] as UserType[],
+  positions: [] as PositionType[],
   isLoading: false as boolean | null,
   page: 1,
   limit: 6,
   countRecord: 0,
+  selectedPosition: {} as SelectedPositionType,
 }
 const UsersSlice = createSlice({
   name: 'UsersSlice',
   initialState: initialState,
   reducers: {
+    setPosition: (state, { payload }) => {
+      const selectedPosition = state.selectedPosition
+      debugger
+      if (payload in selectedPosition) {
+        delete selectedPosition[payload]
+        state.selectedPosition = selectedPosition
+        return
+      }
+      state.selectedPosition[payload] = payload
+    },
     setPage: (state, { payload }) => {
       state.page = payload + 1
     },
@@ -58,6 +84,17 @@ const UsersSlice = createSlice({
       alert('Error')
     })
     /* fetchGetToken */
+    builder.addCase(fetchGetUserPosition.pending, (state) => {
+      state.isLoading = true
+    })
+    builder.addCase(fetchGetUserPosition.fulfilled, (state, { payload }) => {
+      state.positions = payload.positions || []
+    })
+    builder.addCase(fetchGetUserPosition.rejected, (state) => {
+      state.isLoading = false
+      alert('Error')
+    })
+    /* fetchGetToken */
     builder.addCase(fetchGetToken.pending, (state) => {
       state.isLoading = true
     })
@@ -70,13 +107,12 @@ const UsersSlice = createSlice({
     })
   },
 })
-
+export const selectPositionSelected = (state: RootState) => state.usersReducer.selectedPosition
+export const selectPosition = (state: RootState) => state.usersReducer.positions
 export const selectPage = (state: RootState) => state.usersReducer.page
 export const selectLimit = (state: RootState) => state.usersReducer.limit
 export const selectCountRecord = (state: RootState) => state.usersReducer.countRecord
-
 export const selectUsers = (state: RootState) => state.usersReducer.users
-
 export const selectIsLoading = (state: RootState) => state.usersReducer.isLoading
 
 export const { reducer: usersReducer, actions: usersActions } = UsersSlice

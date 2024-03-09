@@ -9,6 +9,20 @@ export const userApi = {
     /* const response = await api.get<TokenType>('token')
     return response.data */
   },
+  async getPositions() {
+    const response = await api.get<ApiPositionType>('positions')
+    return response.data
+  },
+}
+
+export type ApiPositionType = {
+  success?: boolean
+  positions?: PositionType[]
+}
+
+export type PositionType = {
+  id?: number
+  name?: string
 }
 
 export type TokenType = {

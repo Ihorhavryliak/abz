@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import InputGeneral from '../../Input/InputGeneral'
 import SelectYourPosition from './SelectYourPosition/SelectYourPosition'
 import ButtonGeneral from '../../Button/ButtonGeneral'
 import FieldUpload from '../../Fields/FieldUpload'
 import useFormData from './hooks/useFormData'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/redux/store'
+import { fetchGetUserPosition } from '@/redux/slice/UsersSlice'
 
 const SectionForm = () => {
   const { dataInput, register, errors, handleSubmit, onSubmit, watch } = useFormData()
