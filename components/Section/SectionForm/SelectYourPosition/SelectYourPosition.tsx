@@ -23,7 +23,7 @@ const SelectYourPosition = () => {
             key={id}
             value={name || ''}
             onClick={() => handleChosePosition(id)}
-            checked={(id && !!selectedPosition[id]) || false}
+            checked={id === selectedPosition || false}
           />
         ))}
       </div>

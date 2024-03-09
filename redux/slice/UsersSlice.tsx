@@ -47,21 +47,14 @@ const initialState = {
   page: 1,
   limit: 6,
   countRecord: 0,
-  selectedPosition: {} as SelectedPositionType,
+  selectedPosition: 0,
 }
 const UsersSlice = createSlice({
   name: 'UsersSlice',
   initialState: initialState,
   reducers: {
     setPosition: (state, { payload }) => {
-      const selectedPosition = state.selectedPosition
-      debugger
-      if (payload in selectedPosition) {
-        delete selectedPosition[payload]
-        state.selectedPosition = selectedPosition
-        return
-      }
-      state.selectedPosition[payload] = payload
+      state.selectedPosition = payload
     },
     setPage: (state, { payload }) => {
       state.page = payload + 1

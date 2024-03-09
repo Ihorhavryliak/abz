@@ -33,11 +33,11 @@ const InputGeneral = ({ errors, label, type = 'text', phone, register, validatio
       <div className="relative font-nunito input-component mb-5 empty group">
         <input
           type={type}
-          id="floating_outlined"
+          id={`floating_outlined ${item.id}`}
           className={classNames(
             isError ? 'border-custom-red-100 border-2' : 'border-custom-gray-200 border ',
             value ? 'text-custom-black-100' : 'text-custom-gray-300',
-            'w-full py-3.5 ps-4 rounded focus:outline-none peer [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none group'
+            'w-full py-3.5 ps-4 rounded focus:outline-none peer [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
           )}
           {...register(item.name as UserInformationNameType, validation)}
           onKeyDown={(e) => {
@@ -47,11 +47,11 @@ const InputGeneral = ({ errors, label, type = 'text', phone, register, validatio
           }}
         />
         <label
-          htmlFor="floating_outlined"
+          htmlFor={`floating_outlined ${item.id}`}
           className={classNames(
             isError ? 'text-custom-red-100' : 'text-custom-gray-300',
             !value ? 'top-4 text-base' : '-top-2 text-sm',
-            'absolute left-2 transition-all group-focus:bg-gray-100 bg-white px-1 group-focus-within:-top-2 group-focus-within:text-sm'
+            'absolute left-2 transition-all group-focus:bg-gray-100 bg-white px-1 group-focus-within:-top-2 group-focus-within:text-sm focus-within:-top-2'
           )}
         >
           {label && label}
