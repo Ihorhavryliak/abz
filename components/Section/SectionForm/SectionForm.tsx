@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import InputGeneral from '../../Input/InputGeneral'
 import SelectYourPosition from './SelectYourPosition/SelectYourPosition'
 import ButtonGeneral from '../../Button/ButtonGeneral'
@@ -14,13 +14,27 @@ const SectionForm = () => {
         Working with GET request
       </h2>
       <div className=" flex justify-center">
-        <form className="max-w-[380px] w-full">
-          <div>
+        <div className="max-w-[380px] w-full">
+          <form className="max-w-[380px] w-full">
             {dataInput.map((input) => {
+              if (input.type === 'file') {
+                return (
+                  <FieldUpload
+                    key={input.id}
+                    value={watch(input.name as 'name')}
+                    label={input.label}
+                    type={input.type}
+                    item={input}
+                    register={register}
+                    errors={errors}
+                    validation={input.validation}
+                  />
+                )
+              }
               return (
                 <div key={input.id} className="mt-[50px]">
                   <InputGeneral
-                    value={watch(input.name)}
+                    value={watch(input.name as 'name')}
                     label={input.label}
                     type={input.type}
                     item={input}
@@ -35,14 +49,12 @@ const SectionForm = () => {
             <div className="mt-[29px]">
               <SelectYourPosition />
             </div>
-            <div className="mt-[50px]">
-              <FieldUpload />
-            </div>
-            <div className="mt-[50px] flex justify-center">
-              <ButtonGeneral text="Sign up" onClick={() => handleSubmit(onSubmit)()} />
-            </div>
+            <div className="mt-[50px]"></div>
+          </form>
+          <div className="mt-[50px] flex justify-center">
+            <ButtonGeneral text="Sign up" onClick={() => handleSubmit(onSubmit)()} />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   )
