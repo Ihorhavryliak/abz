@@ -32,6 +32,13 @@ const config: Config = {
       maxWidth: {
         mx: '1280px'
       },
+      screens: {
+        '360': '360px',
+        '768': '768px',
+        '1024': '1024px',
+        '1280': '1280px',
+        '1536': '1536px'
+      },
     },
   },
   plugins: [],

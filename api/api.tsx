@@ -7,7 +7,6 @@ const TOKEN = generalConst.TOKEN
 const token = storage.getStorage(TOKEN)
 
 export const api = axios.create({
-  withCredentials: true,
   baseURL: URL_API,
   headers: {
     Authorization: `Bearer ${token}`,

@@ -33,7 +33,7 @@ const SelectYourPosition = () => {
     <div>
       <div className="flex flex-col gap-2.5 mt-[11px]">
         {professionData.map(({ checked, id, name, onClick }) => (
-          <InputRadio value={name} onClick={() => onClick(id)} checked={checked} />
+          <InputRadio key={id} value={name} onClick={() => onClick(id)} checked={checked} />
         ))}
       </div>
     </div>
