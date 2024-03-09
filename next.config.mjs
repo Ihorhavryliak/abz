@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['frontend-test-assignment-api.abz.agency', 'https://frontend-test-assignment-api.abz.agency'],
+    remotePatterns: [
+      { hostname: 'frontend-test-assignment-api.abz.agency' },
+      { hostname: 'https://frontend-test-assignment-api.abz.agency' },
+    ],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import CardGeneral from '../../Cards/CardGeneral'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchGetCountPageUsers, fetchGetUsers, selectCountRecord, selectUsers } from '@/redux/slice/UsersSlice'
-import { UserType } from '@/api/userApi'
 import ButtonGeneral from '@/components/Button/ButtonGeneral'
 import { AppDispatch } from '@/redux/store'
 

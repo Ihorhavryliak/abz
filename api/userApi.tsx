@@ -4,7 +4,6 @@ export const userApi = {
   async get(page: number, count: number) {
     const responseOne = await api.get<UsersType>(`users?page=${page}&count=${count}`)
     return responseOne.data
-
   },
   async getToken() {
     /* const response = await api.get<TokenType>('token')
