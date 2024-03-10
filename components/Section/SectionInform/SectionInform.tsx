@@ -14,7 +14,6 @@ const SectionInform = () => {
         <Image
           className="w-full max-360:h-[500px]  max-768:h-[500px] max-1024:h-[650px] h-[650px]  max-1170:w-[1170px]"
           alt="photo"
-          sizes=""
           src={photo}
           loading="lazy"
           style={{
