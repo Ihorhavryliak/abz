@@ -1,6 +1,6 @@
 const Preloader = () => {
   return (
-    <div className="fixed left-1/2 top-1/3 z-50 w-20 h-20">
+    <div className="fixed left-[calc(50%-25px)] top-1/3 z-50">
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
         className="w-25 h-25 text-custom-gray-400 animate-spin"
       >

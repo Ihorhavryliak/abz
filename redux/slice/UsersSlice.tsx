@@ -5,12 +5,24 @@ import { InputFieldNameType } from '@/components/Section/SectionForm/hooks/useFo
 
 export const fetchGetUsers = createAsyncThunk('UsersSlice/fetchGetUsers', async (_, { rejectWithValue }) => {
   try {
-    const response = await userApi.get(1, 100)
-    const usersResponse = response.users || []
-    return usersResponse.sort((a, b) => b.registration_timestamp - a.registration_timestamp)
+    let page = 1
+    let successRequest = true
+    let createData = [] as UserType[]
+
+    while (successRequest) {
+      const response = await userApi.get(page, 100)
+      const usersResponse = response.users || []
+      createData = [...createData, ...usersResponse]
+      if (response.page === page) {
+        successRequest = false
+        break
+      }
+      page++
+    }
+
+    return createData.sort((a, b) => b.registration_timestamp - a.registration_timestamp)
   } catch (e) {
     console.log(e)
-    return rejectWithValue('An error occurred')
   }
 })
 
@@ -84,8 +96,9 @@ const UsersSlice = createSlice({
       state.isLoading = true
     })
     builder.addCase(fetchGetUsers.fulfilled, (state, { payload }) => {
-      state.users = payload
-      state.countRecord = payload?.length
+      const users = payload || []
+      state.users = users
+      state.countRecord = users?.length
       state.isLoading = false
     })
     builder.addCase(fetchGetUsers.rejected, (state, action) => {
