@@ -13,7 +13,7 @@ type InputGeneralType = {
   id: number
 }
 
-const InputGeneral = ({ error, label, type = 'text', phone, register, item, value, id }: InputGeneralType) => {
+const InputGeneral = ({ error, label, type = 'text', phone, register, value, id }: InputGeneralType) => {
   return (
     <div className='relative'>
       <div className="relative font-nunito input-component  empty group">
@@ -36,14 +36,14 @@ const InputGeneral = ({ error, label, type = 'text', phone, register, item, valu
           htmlFor={`floating_outlined ${id}`}
           className={classNames(
             error ? 'text-custom-red-100' : 'text-custom-gray-300',
-            !value ? 'top-4 text-base' : '-top-2 text-sm',
-            'absolute left-2 transition-all group-focus:bg-gray-100 bg-white px-1 group-focus-within:-top-2 group-focus-within:text-sm focus-within:-top-2'
+            !value ? 'top-[15px] text-base' : '-top-2 text-sm',
+            'absolute left-3 transition-all group-focus:bg-gray-100 bg-white px-1 group-focus-within:-top-2 group-focus-within:text-sm focus-within:-top-2'
           )}
         >
           {label && label}
         </label>
       </div>
-      {phone && <div className="text-custom-gray-300 text-xs leading-[117%] ms-4">{phone}</div>}
+      {phone && <div className="text-custom-gray-300 text-xs leading-[117%] ms-4 mt-1 h-[14px]">{phone}</div>}
       {error && <div className="text-custom-red-100 text-xs leading-[117%] ms-4 mt-1 -bottom-[18px] absolute">{error}</div>}
     </div>
   )

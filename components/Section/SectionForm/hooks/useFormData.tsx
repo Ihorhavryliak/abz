@@ -58,18 +58,19 @@ const useFormData = () => {
       type: 'text',
       label: 'Phone',
       placeholder: '',
+      phone: '+38 (XXX) XXX - XX - XX'
     },
   ]
   const dataFileInput = [
     {
-      name: 'file',
-      type: 'file',
-      label: 'Phone',
+      name: 'position',
+      type: 'radio',
+      label: '',
       placeholder: '',
     },
     {
-      name: 'position',
-      type: 'radio',
+      name: 'file',
+      type: 'file',
       label: '',
       placeholder: '',
     },

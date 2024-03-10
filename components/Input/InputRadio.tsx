@@ -12,7 +12,7 @@ type InputRadioType = {
 
 const InputRadio = ({ checked, onClick, value, register, positionId }: InputRadioType) => {
   return (
-    <div className="flex items-center gap-3 h-5">
+    <div className="flex items-center gap-3 h-5 max-360:h-[26px]">
       <label>
         <div className="group cursor-pointer">
           <div
@@ -34,7 +34,7 @@ const InputRadio = ({ checked, onClick, value, register, positionId }: InputRadi
         </div>
       </label>
 
-      <div className=" font-nunito text-base leading-162 text-custom-black-100">{value}</div>
+      <div className="font-nunito text-base leading-162 text-custom-black-100">{value}</div>
     </div>
   )
 }

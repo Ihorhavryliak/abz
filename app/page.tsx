@@ -13,10 +13,10 @@ const Home = () => {
     <main className="max-w-mx m-auto w-full px-0 mb-[100px] max-1170:px-0">
       <Header />
       <SectionInform />
-      <div className="mt-[140px]">
+      <div className="mt-[140px] max-1024:px-[60px] max-768:px-8 max-360:px-4">
         <SectionUser />
       </div>
-      <div className="mt-[140px]">
+      <div className="mt-[140px] max-1024:px-[60px] max-768:px-8 max-360:px-4">
         <SectionForm />
       </div>
       {isLoading && <Preloader />}

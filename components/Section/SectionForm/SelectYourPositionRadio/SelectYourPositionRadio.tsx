@@ -26,10 +26,10 @@ const SelectYourPositionRadio = ({ register, error }: SelectYourPositionRadioTyp
   return (
     <div>
       <div className="flex gap-1">
-        <h5 className="font-nunito text-base leading-162 text-custom-black-100">Select your position</h5>
+        <h5 className="font-nunito text-base leading-162 text-custom-black-100 h-[25px]">Select your position</h5>
         {error && <span className="text-custom-red-100 text-xs leading-[117%] mt-1">({error})</span>}
       </div>
-      <div className="flex flex-col gap-2.5 mt-[11px]">
+      <div className="flex flex-col gap-2.5 mt-[11px] max-360:gap-[7px]">
         {positions.map(({ id, name }) => (
           <InputRadio
             key={id}

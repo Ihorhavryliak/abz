@@ -31,7 +31,7 @@ const SectionUser = () => {
   return (
     <section id={USERS}>
       <Heading as="h2" text="Working with GET request" />
-      <div className="mt-[50px] w-full flex flex-wrap gap-4">
+      <div className="mt-[50px] w-full flex flex-wrap gap-[29px] max-768:gap-4 max-360:gap-[20px]">
         {users.slice(0, sliceCount).map((user) => (
           <CardGeneral user={user} key={user.id} />
         ))}

@@ -27,7 +27,7 @@ const SectionForm = () => {
         </div>
       ) : (
         <>
-          <Heading as="h2" text="Working with GET request" />
+          <Heading as="h2" text="Working with POST request" />
           <div className=" flex justify-center">
             <div className="max-w-[380px] w-full">
               <form className="max-w-[380px] w-full">
@@ -42,6 +42,7 @@ const SectionForm = () => {
                         register={register(input.name as 'name')}
                         error={error[input.name]?.message}
                         id={index}
+                        phone={input.phone}
                       />
                     </div>
                   )
@@ -50,7 +51,7 @@ const SectionForm = () => {
                 {dataFileInput.map((input, index) => {
                   if (input.type === 'file') {
                     return (
-                      <div key={`${key}${index}f`} className="mt-[50px]">
+                      <div key={`${key}${index}f`} className="mt-[50px] max-360:mt-[47px]">
                         <FieldUpload
                           value={watch(input.name as 'file') as FileList}
                           label={input.label}
@@ -62,7 +63,7 @@ const SectionForm = () => {
                     )
                   }
                   return (
-                    <div key={`${key}${index}f`} className="mt-[43px]">
+                    <div key={`${key}${index}f`} className="mt-[43px] max-360:mt-[25px]">
                       <SelectYourPosition
                         register={register(input.name as 'name')}
                         error={error[input.name]?.message}
