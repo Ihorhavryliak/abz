@@ -7,7 +7,9 @@ export const schema = yup
     phone: yup
       .string()
       .required()
-      .matches(/^\+380\d*$/, 'Phone number should start with the code of Ukraine +380'),
+      .matches(/^\+380\d*$/, 'Phone number should start with the code of Ukraine +380')
+      .min(13, 'Phone number should be at least 13 characters')
+      .max(13, 'Phone number should be at least 13 characters'),
     position: yup.string().required('select your position'),
   })
   .shape({

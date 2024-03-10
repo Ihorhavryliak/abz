@@ -1,10 +1,10 @@
-import { formActions } from '@/redux/slice/FormSlice'
 import { AppDispatch } from '@/redux/store'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from '../validationShema/validationShema'
+import { fetchCreateUser, usersActions } from '@/redux/slice/UsersSlice'
 
 export type ErrorUserFormType = {
   [key: string]: { message: string }
@@ -13,8 +13,8 @@ export type InputFieldNameType = {
   name?: string
   email?: string
   phone?: string
-  file?: File | unknown | undefined
-  position?: string;
+  file?: FileList | unknown | undefined
+  position: string
 }
 export type InputFieldNameKeyType = keyof InputFieldNameType
 
@@ -37,8 +37,7 @@ const useFormData = () => {
   const errorData = errors as ErrorUserFormType
 
   const onSubmit: SubmitHandler<InputFieldNameType> = (data) => {
-    debugger
-    dispatch(formActions.setData({ field: 'nameCompany', value: data.name }))
+    dispatch(fetchCreateUser(data))
   }
 
   const dataInput = [

@@ -1,22 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { type RootState } from '../store'
 import { PositionType, UserType, userApi } from '@/api/userApi'
-import storage from '@/utils/storage'
-import generalConst from '@/constants/generalConst'
-const TOKEN = generalConst.TOKEN
+import { InputFieldNameType } from '@/components/Section/SectionForm/hooks/useFormData'
 
-type SelectedPositionType = { [key: number]: string }
-export const fetchGetToken = createAsyncThunk('UsersSlice/fetchGetToken', async (_, { rejectWithValue }) => {
-  try {
-    const response = await userApi.getToken()
-    return response
-  } catch (e) {
-    console.log(e)
-    return rejectWithValue('An error occurred')
-  }
-})
-
-export const fetchGetUsers = createAsyncThunk('UsersSlice/fetchGetUsers', async (_, { rejectWithValue, getState }) => {
+export const fetchGetUsers = createAsyncThunk('UsersSlice/fetchGetUsers', async (_, { rejectWithValue }) => {
   try {
     const response = await userApi.get(1, 100)
     const usersResponse = response.users || []
@@ -40,6 +27,33 @@ export const fetchGetUserPosition = createAsyncThunk(
   }
 )
 
+export const fetchCreateUser = createAsyncThunk(
+  'FormSlice/fetchCreateUser',
+  async (data: InputFieldNameType, { rejectWithValue }) => {
+    try {
+      const responseToken = await userApi.getToken()
+      const response = await userApi.create(
+        {
+          name: data?.name as string,
+          email: data?.email as string,
+          phone: data?.phone as string,
+          position_id: data?.position as string,
+          photo: data.file as FileList,
+        },
+        responseToken.token
+      )
+      if (response.success) {
+        const response = await userApi.get(1, 100)
+        const usersResponse = response.users || []
+        return usersResponse.sort((a, b) => b.registration_timestamp - a.registration_timestamp)
+      }
+    } catch (e) {
+      console.log(e)
+      return rejectWithValue('An error occurred')
+    }
+  }
+)
+
 const initialState = {
   users: [] as UserType[],
   positions: [] as PositionType[],
@@ -48,6 +62,7 @@ const initialState = {
   limit: 6,
   countRecord: 0,
   selectedPosition: 0,
+  isSuccessSendUserData: false,
 }
 const UsersSlice = createSlice({
   name: 'UsersSlice',
@@ -71,6 +86,7 @@ const UsersSlice = createSlice({
     builder.addCase(fetchGetUsers.fulfilled, (state, { payload }) => {
       state.users = payload
       state.countRecord = payload?.length
+      state.isLoading = false
     })
     builder.addCase(fetchGetUsers.rejected, (state, action) => {
       state.isLoading = false
@@ -82,24 +98,33 @@ const UsersSlice = createSlice({
     })
     builder.addCase(fetchGetUserPosition.fulfilled, (state, { payload }) => {
       state.positions = payload.positions || []
+      state.isLoading = false
     })
     builder.addCase(fetchGetUserPosition.rejected, (state) => {
       state.isLoading = false
       alert('Error')
     })
-    /* fetchGetToken */
-    builder.addCase(fetchGetToken.pending, (state) => {
+    /* fetchCreateUser */
+    builder.addCase(fetchCreateUser.pending, (state, action) => {
       state.isLoading = true
     })
-    builder.addCase(fetchGetToken.fulfilled, (_, { payload }) => {
-      storage.addStorage(TOKEN, payload)
+    builder.addCase(fetchCreateUser.fulfilled, (state, { payload }) => {
+      const users = payload || []
+      state.users = users
+      state.countRecord = users?.length
+      state.isSuccessSendUserData = true
+      state.page = 1
+      state.limit = 6
+      state.isLoading = false
     })
-    builder.addCase(fetchGetToken.rejected, (state) => {
+    builder.addCase(fetchCreateUser.rejected, (state, action) => {
       state.isLoading = false
       alert('Error')
     })
   },
 })
+
+export const selectIsSuccessSendUserData = (state: RootState) => state.usersReducer.isSuccessSendUserData
 export const selectPositionSelected = (state: RootState) => state.usersReducer.selectedPosition
 export const selectPosition = (state: RootState) => state.usersReducer.positions
 export const selectPage = (state: RootState) => state.usersReducer.page
