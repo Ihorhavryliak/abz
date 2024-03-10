@@ -1,8 +1,8 @@
 type ButtonGeneralType = {
-  disabled?: boolean;
-  onClick?: () => void;
-  text: string;
-};
+  disabled?: boolean
+  onClick?: () => void
+  text: string
+}
 
 const ButtonGeneral = ({ onClick, disabled, text }: ButtonGeneralType) => {
   return (
@@ -13,7 +13,7 @@ const ButtonGeneral = ({ onClick, disabled, text }: ButtonGeneralType) => {
     >
       {text}
     </button>
-  );
-};
+  )
+}
 
-export default ButtonGeneral;
+export default ButtonGeneral

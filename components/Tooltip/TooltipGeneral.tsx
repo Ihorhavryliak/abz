@@ -20,7 +20,7 @@ const TooltipGeneral = ({ id, text, children }: TooltipGeneralType) => {
             padding: '3px 16px',
             fontSize: '16px',
             lineHeight: '162%',
-            marginTop: '11px'
+            marginTop: '11px',
           }}
           className="max-w-[400px] w-full whitespace-pre-line font-nunito text-white"
           opacity={1}

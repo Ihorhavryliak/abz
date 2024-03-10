@@ -1,9 +1,7 @@
-type ClassNamesType = (
-  ...classes: (string | undefined | null | false)[]
-) => string;
+type ClassNamesType = (...classes: (string | undefined | null | false)[]) => string
 
 const classNames: ClassNamesType = (...classes) => {
-  return classes.filter(Boolean).join(" ");
-};
+  return classes.filter(Boolean).join(' ')
+}
 
-export default classNames;
+export default classNames

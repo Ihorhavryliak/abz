@@ -15,7 +15,7 @@ type InputGeneralType = {
 
 const InputGeneral = ({ error, label, type = 'text', phone, register, value, id }: InputGeneralType) => {
   return (
-    <div className='relative'>
+    <div className="relative">
       <div className="relative font-nunito input-component  empty group">
         <input
           type={type}
@@ -43,8 +43,14 @@ const InputGeneral = ({ error, label, type = 'text', phone, register, value, id 
           {label && label}
         </label>
       </div>
-      {phone && <div className="text-custom-gray-300 text-xs leading-[117%] ms-4 max-360:mt-1 h-[16px] max-1024:mt-1 max-1170:mt-1 max-768:mt-0">{phone}</div>}
-      {error && <div className="text-custom-red-100 text-xs leading-[117%] ms-4 mt-1 -bottom-[18px] absolute">{error}</div>}
+      {phone && (
+        <div className="text-custom-gray-300 text-xs leading-[117%] ms-4 max-360:mt-1 h-[16px] max-1024:mt-1 max-1170:mt-1 max-768:mt-0">
+          {phone}
+        </div>
+      )}
+      {error && (
+        <div className="text-custom-red-100 text-xs leading-[117%] ms-4 mt-1 -bottom-[18px] absolute">{error}</div>
+      )}
     </div>
   )
 }

@@ -2,27 +2,14 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { type RootState } from '../store'
 import { PositionType, UserType, userApi } from '@/api/userApi'
 import { InputFieldNameType } from '@/components/Section/SectionForm/hooks/useFormData'
+import getAllUsers from './function/getAllUsers'
 
 export const fetchGetUsers = createAsyncThunk('UsersSlice/fetchGetUsers', async (_, { rejectWithValue }) => {
   try {
-    let page = 1
-    let successRequest = true
-    let createData = [] as UserType[]
-
-    while (successRequest) {
-      const response = await userApi.get(page, 100)
-      const usersResponse = response.users || []
-      createData = [...createData, ...usersResponse]
-      if (response.page === page) {
-        successRequest = false
-        break
-      }
-      page++
-    }
-
-    return createData.sort((a, b) => b.registration_timestamp - a.registration_timestamp)
+   return await getAllUsers()
   } catch (e) {
     console.log(e)
+    return rejectWithValue('An error occurred')
   }
 })
 
@@ -55,9 +42,7 @@ export const fetchCreateUser = createAsyncThunk(
         responseToken.token
       )
       if (response.success) {
-        const response = await userApi.get(1, 100)
-        const usersResponse = response.users || []
-        return usersResponse.sort((a, b) => b.registration_timestamp - a.registration_timestamp)
+      return  await getAllUsers()
       }
     } catch (e) {
       console.log(e)

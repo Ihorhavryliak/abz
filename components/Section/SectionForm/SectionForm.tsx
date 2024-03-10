@@ -51,7 +51,10 @@ const SectionForm = () => {
                 {dataFileInput.map((input, index) => {
                   if (input.type === 'file') {
                     return (
-                      <div key={`${key}${index}f`} className="mt-[50px] max-360:mt-[46px] max-768:mt-[46px] max-1024:mt-[46px] max-1170:mt-[46px]">
+                      <div
+                        key={`${key}${index}f`}
+                        className="mt-[50px] max-360:mt-[46px] max-768:mt-[46px] max-1024:mt-[46px] max-1170:mt-[46px]"
+                      >
                         <FieldUpload
                           value={watch(input.name as 'file') as FileList}
                           label={input.label}
@@ -63,7 +66,10 @@ const SectionForm = () => {
                     )
                   }
                   return (
-                    <div key={`${key}${index}f`} className="mt-[43px] max-360:mt-[24px] max-768:mt-[28px]  max-1024:mt-[24px] max-1170:mt-[24px]">
+                    <div
+                      key={`${key}${index}f`}
+                      className="mt-[43px] max-360:mt-[24px] max-768:mt-[28px]  max-1024:mt-[24px] max-1170:mt-[24px]"
+                    >
                       <SelectYourPosition
                         register={register(input.name as 'name')}
                         error={error[input.name]?.message}

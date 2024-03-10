@@ -1,9 +1,9 @@
-import IconSuccessImage from "@/components/Icon/IconSuccessImage"
+import IconSuccessImage from '@/components/Icon/IconSuccessImage'
 
 const FormSuccess = () => {
   return (
     <div className="flex justify-center">
-      <IconSuccessImage/>
+      <IconSuccessImage />
     </div>
   )
 }

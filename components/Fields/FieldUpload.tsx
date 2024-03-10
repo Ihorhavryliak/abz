@@ -11,7 +11,6 @@ type InputGeneralType = {
 }
 
 const FieldUpload = ({ error, register, value }: InputGeneralType) => {
-
   return (
     <div className="font-nunito w-full relative">
       <label>
@@ -31,7 +30,7 @@ const FieldUpload = ({ error, register, value }: InputGeneralType) => {
               'w-full  py-3.5 ps-4 border-s-0 rounded-e truncate h-[54px] box-border'
             )}
           >
-            {value && value[0]?.name  ? value[0].name : 'Upload your photo'}
+            {value && value[0]?.name ? value[0].name : 'Upload your photo'}
           </div>
         </div>
         <input className="hidden" type="file" accept=".jpg, .jpeg" {...register} />

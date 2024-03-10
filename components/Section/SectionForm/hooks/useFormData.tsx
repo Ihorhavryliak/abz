@@ -1,10 +1,9 @@
 import { AppDispatch } from '@/redux/store'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from '../validationShema/validationShema'
-import { fetchCreateUser, usersActions } from '@/redux/slice/UsersSlice'
+import { fetchCreateUser } from '@/redux/slice/UsersSlice'
 
 export type ErrorUserFormType = {
   [key: string]: { message: string }
@@ -58,7 +57,7 @@ const useFormData = () => {
       type: 'text',
       label: 'Phone',
       placeholder: '',
-      phone: '+38 (XXX) XXX - XX - XX'
+      phone: '+38 (XXX) XXX - XX - XX',
     },
   ]
   const dataFileInput = [
