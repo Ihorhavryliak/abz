@@ -4,7 +4,6 @@ import photo from '../../../public/assets/images/main.png'
 import Image from 'next/image'
 import sectionIdConst from '@/constants/sectionIdConst'
 import Link from 'next/link'
-import MainImage from '@/components/Icon/MainImage'
 const SING_UP = sectionIdConst.SING_UP
 
 const SectionInform = () => {
@@ -12,7 +11,18 @@ const SectionInform = () => {
     <section className="relative">
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div>
-        <MainImage />
+        <Image
+          className="w-full max-360:h-[500px]  max-768:h-[500px] max-1024:h-[650px] h-[650px]  max-1170:w-[1170px]"
+          alt="photo"
+          sizes=""
+          src={photo}
+          loading="lazy"
+          style={{
+            objectFit: 'cover',
+          }}
+          width={1170}
+          height={650}
+        />
       </div>
       <div className="absolute top-0  w-full text-center flex justify-center mt-[164px] max-768:mt-[89px] max-360:mt-[40px] mt-">
         <div className="max-w-[380px] w-full font-nunito text-white">
