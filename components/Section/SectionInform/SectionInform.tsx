@@ -20,6 +20,8 @@ const SectionInform = () => {
           style={{
             objectFit: 'cover',
           }}
+          width={1170}
+      height={650}
         />
       </div>
       <div className="absolute top-0  w-full text-center flex justify-center mt-[164px] max-768:mt-[89px] max-360:mt-[40px] mt-">
