@@ -23,7 +23,7 @@ const SectionInform = () => {
         <div className="max-w-[380px] w-full font-nunito text-white">
           <h1 className="text-[40px] leading-[100%] max-360:px-4">Test assignment for front-end developer</h1>
           <p className="text-base leading-[162%] mt-[22px] max-360:px-4">
-            What defines a good front-end developer is one that has skilled knowledge of HTML, CSS, JS with a vast understanding of User design thinking as they'll be building web interfaces with accessibility in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.
+            What defines a good front-end developer is one that has skilled knowledge of HTML, CSS, JS with a vast understanding of User design thinking as they &apos ll be building web interfaces with accessibility in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.
           </p>
           <div className="mt-8">
             <Link href={`#${SING_UP}`} title="Sign up">

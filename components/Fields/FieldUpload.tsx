@@ -13,9 +13,9 @@ type InputGeneralType = {
 const FieldUpload = ({ error, register, value }: InputGeneralType) => {
 
   return (
-    <div className="font-nunito  w-full cursor-pointer relative">
+    <div className="font-nunito w-full relative">
       <label>
-        <div className="flex h-[54px]">
+        <div className="flex h-[54px] cursor-pointer">
           <div
             className={classNames(
               error ? 'border-custom-red-100 border-2' : ' border border-black',
