@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchGetUsers, selectCountRecord, selectLimit, selectPage, selectUsers, usersActions } from '@/redux/slice/UsersSlice'
 import ButtonGeneral from '@/components/Button/ButtonGeneral'
 import { AppDispatch } from '@/redux/store'
+import sectionIdConst from '@/constants/sectionIdConst'
+const USERS = sectionIdConst.USERS
 
 const SectionUser = () => {
   const dispatch: AppDispatch = useDispatch()
@@ -19,7 +21,7 @@ const SectionUser = () => {
   }, [dispatch])
 
   return (
-    <section className="mt-[140px]">
+    <section id={USERS}>
       <h2 className="font-nunito text-custom-black-100 text-[40px] leading-[100%] text-center">
         Working with GET request
       </h2>

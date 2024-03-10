@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useId } from 'react'
 import InputGeneral from '../../Input/InputGeneral'
 import SelectYourPosition from './SelectYourPositionRadio/SelectYourPositionRadio'
 import ButtonGeneral from '../../Button/ButtonGeneral'
@@ -7,14 +7,16 @@ import useFormData from './hooks/useFormData'
 import { useSelector } from 'react-redux'
 import { selectIsSuccessSendUserData } from '@/redux/slice/UsersSlice'
 import FormSuccess from './FormSuccess/FormSuccess'
-
-const key = 'SectionFormKey'
+import sectionIdConst from '@/constants/sectionIdConst'
+const SING_UP = sectionIdConst.SING_UP
 
 const SectionForm = () => {
+  const key = useId()
   const { dataInput, dataFileInput, register, error, handleSubmit, onSubmit, watch } = useFormData()
   const isSuccess = useSelector(selectIsSuccessSendUserData)
+
   return (
-    <section>
+    <section id={SING_UP}>
       {isSuccess ? (
         <div>
           <h3 className="font-nunito text-custom-black-100 text-[40px] leading-[100%] text-center">

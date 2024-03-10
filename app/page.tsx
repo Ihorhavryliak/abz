@@ -13,7 +13,9 @@ const Home = () => {
     <main className="max-w-mx m-auto w-full px-4 mb-[100px]">
       <Header />
       <SectionInform />
-      <SectionUser />
+      <div className="mt-[140px]">
+        <SectionUser />
+      </div>
       <div className="mt-[140px]">
         <SectionForm />
       </div>
