@@ -12,14 +12,14 @@ type InputRadioType = {
 
 const InputRadio = ({ checked, onClick, value, register, positionId }: InputRadioType) => {
   return (
-    <div className="flex items-center gap-3 h-5 max-360:h-[26px]">
-      <label>
+    <div className="flex items-center gap-3 h-[26px]">
+      <label className="flex items-center">
         <div className="group cursor-pointer">
           <div
             onClick={onClick}
             className={classNames(
               checked ? 'border-custom-blue-100' : 'border-custom-gray-200',
-              'w-5 h-5 rounded-full border  relative group-hover:border-custom-blue-100 transition-all'
+              'w-5 h-5 -mt-[2px] rounded-full border relative group-hover:border-custom-blue-100 transition-all'
             )}
           >
             <span
@@ -27,8 +27,7 @@ const InputRadio = ({ checked, onClick, value, register, positionId }: InputRadi
                 checked && 'bg-custom-blue-100',
                 'w-2.5 h-2.5 rounded-full absolute left-1 top-1 group-hover:bg-custom-blue-100 transition-all'
               )}
-            >
-            </span>
+            ></span>
           </div>
           <input className="hidden" type="radio" value={positionId} {...register} />
         </div>

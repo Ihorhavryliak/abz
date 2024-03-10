@@ -7,7 +7,7 @@ const SING_UP = sectionIdConst.SING_UP
 
 const Header = () => {
   return (
-    <div className="max-360:px-4 max-360:py-[13px] py-4 flex justify-between w-full max-1024:px-[60px] max-768:px-8 max-360:gap-3.5 items-center">
+    <div className="max-360:px-4 py-[13px] flex flex-wrap justify-between w-full max-1024:px-[60px] max-768:px-8 max-360:gap-3.5 items-center">
       <div className='max-360:w-[104px] h-[26px]'>
       <IconLogo />
       </div>

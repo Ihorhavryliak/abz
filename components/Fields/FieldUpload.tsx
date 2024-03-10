@@ -13,13 +13,13 @@ type InputGeneralType = {
 const FieldUpload = ({ error, register, value }: InputGeneralType) => {
 
   return (
-    <div className="font-nunito max-w-[328px] w-full cursor-pointer relative">
+    <div className="font-nunito  w-full cursor-pointer relative">
       <label>
         <div className="flex h-[54px]">
           <div
             className={classNames(
               error ? 'border-custom-red-100 border-2' : ' border border-black',
-              'text-base leading-162 text-center px-[15px] py-3.5 rounded-s'
+              'text-base leading-162 text-center px-[14.5px] py-3.5 rounded-s'
             )}
           >
             Upload
