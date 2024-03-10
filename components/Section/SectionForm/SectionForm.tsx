@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { selectIsSuccessSendUserData } from '@/redux/slice/UsersSlice'
 import FormSuccess from './FormSuccess/FormSuccess'
 import sectionIdConst from '@/constants/sectionIdConst'
+import Heading from '@/components/Heading/Heading'
 const SING_UP = sectionIdConst.SING_UP
 
 const SectionForm = () => {
@@ -19,18 +20,14 @@ const SectionForm = () => {
     <section id={SING_UP}>
       {isSuccess ? (
         <div>
-          <h3 className="font-nunito text-custom-black-100 text-[40px] leading-[100%] text-center">
-            User successfully registered
-          </h3>
+          <Heading as="h2" text="User successfully registered" />
           <div className="mt-[50px]">
             <FormSuccess />
           </div>
         </div>
       ) : (
         <>
-          <h2 className="font-nunito text-custom-black-100 text-[40px] leading-[100%] text-center">
-            Working with GET request
-          </h2>
+          <Heading as="h2" text="Working with GET request" />
           <div className=" flex justify-center">
             <div className="max-w-[380px] w-full">
               <form className="max-w-[380px] w-full">

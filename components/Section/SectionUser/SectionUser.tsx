@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react'
 import CardGeneral from '../../Cards/CardGeneral'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchGetUsers, selectCountRecord, selectLimit, selectPage, selectUsers, usersActions } from '@/redux/slice/UsersSlice'
+import {
+  fetchGetUsers,
+  selectCountRecord,
+  selectLimit,
+  selectPage,
+  selectUsers,
+  usersActions,
+} from '@/redux/slice/UsersSlice'
 import ButtonGeneral from '@/components/Button/ButtonGeneral'
 import { AppDispatch } from '@/redux/store'
 import sectionIdConst from '@/constants/sectionIdConst'
+import Heading from '@/components/Heading/Heading'
 const USERS = sectionIdConst.USERS
 
 const SectionUser = () => {
@@ -22,9 +30,7 @@ const SectionUser = () => {
 
   return (
     <section id={USERS}>
-      <h2 className="font-nunito text-custom-black-100 text-[40px] leading-[100%] text-center">
-        Working with GET request
-      </h2>
+      <Heading as="h2" text="Working with GET request" />
       <div className="mt-[50px] w-full flex flex-wrap gap-4">
         {users.slice(0, sliceCount).map((user) => (
           <CardGeneral user={user} key={user.id} />
