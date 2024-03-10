@@ -1,12 +1,12 @@
 import React from 'react'
 import InputGeneral from '../../Input/InputGeneral'
-import SelectYourPosition from './SelectYourPosition/SelectYourPosition'
+import SelectYourPosition from './SelectYourPositionRadio/SelectYourPositionRadio'
 import ButtonGeneral from '../../Button/ButtonGeneral'
 import FieldUpload from '../../Fields/FieldUpload'
 import useFormData from './hooks/useFormData'
 
 const SectionForm = () => {
-  const { dataInput, register, errors, handleSubmit, onSubmit, watch } = useFormData()
+  const { dataInput, dataFileInput, register, error, handleSubmit, onSubmit, watch } = useFormData()
 
   return (
     <div>
@@ -17,20 +17,6 @@ const SectionForm = () => {
         <div className="max-w-[380px] w-full">
           <form className="max-w-[380px] w-full">
             {dataInput.map((input) => {
-              if (input.type === 'file') {
-                return (
-                  <FieldUpload
-                    key={input.id}
-                    value={watch(input.name as 'name')}
-                    label={input.label}
-                    type={input.type}
-                    item={input}
-                    register={register}
-                    errors={errors}
-                    validation={input.validation}
-                  />
-                )
-              }
               return (
                 <div key={input.id} className="mt-[50px]">
                   <InputGeneral
@@ -38,18 +24,32 @@ const SectionForm = () => {
                     label={input.label}
                     type={input.type}
                     item={input}
-                    register={register}
-                    errors={errors}
-                    validation={input.validation}
+                    register={register(input.name as 'name')}
+                    error={error[input.name]?.message}
                   />
                 </div>
               )
             })}
 
-            <div className="mt-[29px]">
+            <div className="mt-[43px]">
               <SelectYourPosition />
             </div>
-            <div className="mt-[50px]"></div>
+            {dataFileInput.map((input) => {
+              if (input.type === 'file') {
+                return (
+                  <div key={input.id} className="mt-[50px]">
+                    <FieldUpload
+                      value={watch(input.name as 'name')}
+                      label={input.label}
+                      type={input.type}
+                      item={input}
+                      register={register(input.name as 'name')}
+                      error={error[input.name]?.message}
+                    />{' '}
+                  </div>
+                )
+              }
+            })}
           </form>
           <div className="mt-[50px] flex justify-center">
             <ButtonGeneral text="Sign up" onClick={() => handleSubmit(onSubmit)()} />
