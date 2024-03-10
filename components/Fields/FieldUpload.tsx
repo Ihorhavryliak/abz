@@ -19,7 +19,7 @@ const FieldUpload = ({ error, register, value }: InputGeneralType) => {
           <div
             className={classNames(
               error ? 'border-custom-red-100 border-2' : ' border border-black',
-              'text-base leading-162 text-center px-[14.5px] py-3.5 rounded-s'
+              'text-base leading-162 text-center px-[14.5px] py-3.5 rounded-s box-border'
             )}
           >
             Upload
@@ -28,7 +28,7 @@ const FieldUpload = ({ error, register, value }: InputGeneralType) => {
             className={classNames(
               error ? 'border-custom-red-100 border-2' : 'border-custom-gray-200 border',
               value ? 'text-custom-black-100' : 'text-custom-gray-300',
-              'w-full  py-3.5 ps-4 border-s-0 rounded-e truncate h-[54px]'
+              'w-full  py-3.5 ps-4 border-s-0 rounded-e truncate h-[54px] box-border'
             )}
           >
             {value && value[0]?.name  ? value[0].name : 'Upload your photo'}

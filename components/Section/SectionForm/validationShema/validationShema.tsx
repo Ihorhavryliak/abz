@@ -15,13 +15,48 @@ export const schema = yup
   .shape({
     file: yup
       .mixed()
-      .test('required', 'you need to provide a file', (value: any) => {
+      .test('required', 'you need to provide a file', (value: FileList | any) => {
         return value && value?.length
       })
-      .test('fileSize', 'The file is too large', (value: any, context) => {
+      .test('fileSize', 'The file is too large', (value: FileList | any) => {
         return value && value[0] && value[0].size <= 200000
       })
-      .test('type', 'We only support jpeg', function (value: any) {
+      .test('type', 'We only support jpeg', function (value: FileList | any) {
         return value && value[0] && value[0].type === 'image/jpeg'
+      })
+      .test('minSize', 'Minimum size should be 70x70px', async function (value: FileList | any) {
+        if (value && value[0]) {
+          const file = value[0]
+          try {
+            const dimensions = await getImageDimensions(file)
+            if (dimensions.width >= 70 && dimensions.height >= 70) {
+              return true
+            } else {
+              false
+            }
+          } catch (error) {
+            false
+          }
+        }
+        return false
       }),
   })
+
+async function getImageDimensions(file: File): Promise<{ width: number; height: number }> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const img = new Image()
+      img.onload = () => {
+        resolve({ width: img.width, height: img.height })
+      }
+      img.src = e.target?.result as string
+    }
+
+    reader.onerror = (error) => {
+      reject(error)
+    }
+
+    reader.readAsDataURL(file)
+  })
+}
