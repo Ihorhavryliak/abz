@@ -36,8 +36,8 @@ const InputGeneral = ({ error, label, type = 'text', phone, register, value, id 
           htmlFor={`floating_outlined ${id}`}
           className={classNames(
             error ? 'text-custom-red-100' : 'text-custom-gray-300',
-            !value ? 'top-[15px] text-base' : '-top-2 text-sm',
-            'absolute left-3 transition-all group-focus:bg-gray-100 bg-white px-1 group-focus-within:-top-2 group-focus-within:text-sm focus-within:-top-2'
+            !value ? 'top-[15px] text-base' : '-top-2.5 text-sm',
+            'absolute left-3 transition-all group-focus:bg-gray-100 bg-white px-1 group-focus-within:-top-2.5 group-focus-within:text-sm focus-within:-top-2.5'
           )}
         >
           {label && label}
