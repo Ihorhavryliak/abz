@@ -5,6 +5,8 @@ import ButtonGeneral from '../../Button/ButtonGeneral'
 import FieldUpload from '../../Fields/FieldUpload'
 import useFormData from './hooks/useFormData'
 
+const key = 'SectionFormKey'
+
 const SectionForm = () => {
   const { dataInput, dataFileInput, register, error, handleSubmit, onSubmit, watch } = useFormData()
 
@@ -16,9 +18,9 @@ const SectionForm = () => {
       <div className=" flex justify-center">
         <div className="max-w-[380px] w-full">
           <form className="max-w-[380px] w-full">
-            {dataInput.map((input) => {
+            {dataInput.map((input, index) => {
               return (
-                <div key={input.id} className="mt-[50px]">
+                <div key={`${key}${index}`} className="mt-[50px]">
                   <InputGeneral
                     value={watch(input.name as 'name')}
                     label={input.label}
@@ -26,18 +28,16 @@ const SectionForm = () => {
                     item={input}
                     register={register(input.name as 'name')}
                     error={error[input.name]?.message}
+                    id={index}
                   />
                 </div>
               )
             })}
 
-            <div className="mt-[43px]">
-              <SelectYourPosition />
-            </div>
-            {dataFileInput.map((input) => {
+            {dataFileInput.map((input, index) => {
               if (input.type === 'file') {
                 return (
-                  <div key={input.id} className="mt-[50px]">
+                  <div key={`${key}${index}f`} className="mt-[50px]">
                     <FieldUpload
                       value={watch(input.name as 'name')}
                       label={input.label}
@@ -49,6 +49,11 @@ const SectionForm = () => {
                   </div>
                 )
               }
+              return (
+                <div key={`${key}${index}f`} className="mt-[43px]">
+                  <SelectYourPosition register={register(input.name as 'name')}  error={error[input.name]?.message} />
+                </div>
+              )
             })}
           </form>
           <div className="mt-[50px] flex justify-center">

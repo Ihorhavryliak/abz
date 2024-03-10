@@ -10,19 +10,20 @@ type InputGeneralType = {
   phone?: string
   register: UseFormRegisterReturn
   value: string
+  id: number
 }
 
-const InputGeneral = ({ error, label, type = 'text', phone, register, item, value }: InputGeneralType) => {
+const InputGeneral = ({ error, label, type = 'text', phone, register, item, value, id }: InputGeneralType) => {
   return (
-    <div>
-      <div className="relative font-nunito input-component mb-5 empty group">
+    <div className='relative'>
+      <div className="relative font-nunito input-component  empty group">
         <input
           type={type}
-          id={`floating_outlined ${item.id}`}
+          id={`floating_outlined ${id}`}
           className={classNames(
             error ? 'border-custom-red-100 border-2' : 'border-custom-gray-200 border ',
             value ? 'text-custom-black-100' : 'text-custom-gray-300',
-            'w-full py-3.5 ps-4 rounded focus:outline-none peer [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
+            'w-full h-[54px] py-3.5 ps-4 rounded focus:outline-none peer [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none'
           )}
           {...register}
           onKeyDown={(e) => {
@@ -32,7 +33,7 @@ const InputGeneral = ({ error, label, type = 'text', phone, register, item, valu
           }}
         />
         <label
-          htmlFor={`floating_outlined ${item.id}`}
+          htmlFor={`floating_outlined ${id}`}
           className={classNames(
             error ? 'text-custom-red-100' : 'text-custom-gray-300',
             !value ? 'top-4 text-base' : '-top-2 text-sm',
@@ -43,7 +44,7 @@ const InputGeneral = ({ error, label, type = 'text', phone, register, item, valu
         </label>
       </div>
       {phone && <div className="text-custom-gray-300 text-xs leading-[117%] ms-4">{phone}</div>}
-      {error && <div className="text-custom-red-100 text-xs leading-[117%] ms-4 mt-1">{error}</div>}
+      {error && <div className="text-custom-red-100 text-xs leading-[117%] ms-4 mt-1 -bottom-[18px] absolute">{error}</div>}
     </div>
   )
 }

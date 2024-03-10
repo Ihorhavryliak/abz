@@ -6,13 +6,14 @@ export const schema = yup
     email: yup.string().required().email('Entered not valid email'),
     phone: yup
       .string()
-      .required('Phone number is required')
+      .required()
       .matches(/^\+380\d*$/, 'Phone number should start with the code of Ukraine +380'),
+    position: yup.string().required('select your position'),
   })
   .shape({
     file: yup
       .mixed()
-      .test('required', 'You need to provide a file', (value: any) => {
+      .test('required', 'you need to provide a file', (value: any) => {
         return value && value?.length
       })
       .test('fileSize', 'The file is too large', (value: any, context) => {

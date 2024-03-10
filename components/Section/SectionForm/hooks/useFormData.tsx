@@ -14,16 +14,14 @@ export type InputFieldNameType = {
   email?: string
   phone?: string
   file?: File | unknown | undefined
+  position?: string;
 }
 export type InputFieldNameKeyType = keyof InputFieldNameType
 
 export type DataInputType = {
-  id: string
   name: string
   type: string
   placeholder: string
-  value: string
-  error: string
   label?: string
 }
 
@@ -39,47 +37,42 @@ const useFormData = () => {
   const errorData = errors as ErrorUserFormType
 
   const onSubmit: SubmitHandler<InputFieldNameType> = (data) => {
+    debugger
     dispatch(formActions.setData({ field: 'nameCompany', value: data.name }))
   }
 
   const dataInput = [
     {
-      id: 'useFormData1',
       name: 'name',
       type: 'text',
       label: 'Your name',
       placeholder: '',
-      value: '',
-      error: '',
     },
     {
-      id: 'useFormData2',
       name: 'email',
       type: 'email',
       label: 'Email',
       placeholder: '',
-      value: '',
-      error: '',
     },
     {
-      id: 'useFormData3',
       name: 'phone',
       type: 'text',
       label: 'Phone',
       placeholder: '',
-      value: '',
-      error: '',
     },
   ]
   const dataFileInput = [
     {
-      id: 'useFormData3',
       name: 'file',
       type: 'file',
       label: 'Phone',
       placeholder: '',
-      value: '',
-      error: '',
+    },
+    {
+      name: 'position',
+      type: 'radio',
+      label: '',
+      placeholder: '',
     },
   ]
   return {
