@@ -21,7 +21,7 @@ const SectionForm = () => {
       {isSuccess ? (
         <div>
           <Heading as="h2" text="User successfully registered" />
-          <div className="mt-[50px]">
+          <div className="mt-50">
             <FormSuccess />
           </div>
         </div>
@@ -29,11 +29,11 @@ const SectionForm = () => {
         <>
           <Heading as="h2" text="Working with POST request" />
           <div className=" flex justify-center">
-            <div className="max-w-[380px] w-full">
-              <form className="max-w-[380px] w-full">
+            <div className="max-w-380 w-full">
+              <form className="max-w-380 w-full">
                 {dataInput.map((input, index) => {
                   return (
-                    <div key={`${key}${index}`} className="mt-[50px]">
+                    <div key={`${key}${index}`} className="mt-50">
                       <InputGeneral
                         value={watch(input.name as 'name')}
                         label={input.label}
@@ -53,7 +53,7 @@ const SectionForm = () => {
                     return (
                       <div
                         key={`${key}${index}f`}
-                        className="mt-[50px] max-360:mt-[46px] max-768:mt-[46px] max-1024:mt-[46px] max-1170:mt-[46px]"
+                        className="mt-50 max-360:mt-46 max-768:mt-46 max-1024:mt-46 max-1170:mt-46"
                       >
                         <FieldUpload
                           value={watch(input.name as 'file') as FileList}
@@ -68,7 +68,7 @@ const SectionForm = () => {
                   return (
                     <div
                       key={`${key}${index}f`}
-                      className="mt-[43px] max-360:mt-[24px] max-768:mt-[28px]  max-1024:mt-[24px] max-1170:mt-[24px]"
+                      className="mt-43 max-360:mt-6 max-768:mt-7  max-1024:mt-6 max-1170:mt-6"
                     >
                       <SelectYourPosition
                         register={register(input.name as 'name')}
@@ -78,7 +78,7 @@ const SectionForm = () => {
                   )
                 })}
               </form>
-              <div className="mt-[50px] flex justify-center">
+              <div className="mt-50 flex justify-center">
                 <ButtonGeneral text="Sign up" onClick={() => handleSubmit(onSubmit)()} />
               </div>
             </div>
